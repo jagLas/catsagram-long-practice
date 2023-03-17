@@ -5,7 +5,24 @@ async function getCat() {
     return cat;
 }
 
+async function makeCatFigure() {
+    const div = document.createElement('div');
+    let cat = await getCat();
+    cat = cat[0]
+    // console.log(cat)
+
+    div.innerHTML = 
+    `
+        <figure data-catId="${cat.id}">
+            <figcaption>Kitten pic</figcaption>
+            <img src="${cat.url}" alt="cat pic">
+        </figure>
+    `
+    document.body.appendChild(div);
+}
+
 window.onload = () => {
     console.log('scripts loading')
     // getCat();
+    makeCatFigure();
 }
