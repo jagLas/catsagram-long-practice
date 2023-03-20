@@ -86,6 +86,7 @@ export const fetchImage = async () => {
         // console.log(kittenData);
         const kittenImg = document.querySelector("img");
         kittenImg.src = kittenData[0].url;
+        localStorage.kittenImg = kittenImg.src;
     } catch (e) {
         console.log("Failed to fetch image", e);
     }
