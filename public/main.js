@@ -1,4 +1,4 @@
-import { addVote, removeVote, addComment } from "./listeners.js";
+import { addVote, removeVote, addComment, newPic } from "./listeners.js";
 
 export const createMainContent = () => {
     // Create h1
@@ -28,36 +28,6 @@ function makeNewPicButton() {
     document.body.appendChild(button);
 }
 
-const newPic = () => {
-    //fetch new image
-    fetchImage();
-
-    //reset popularity score
-    const score = document.querySelector('#score');
-    score.innerText = 0;
-
-    //reset comments
-}
-
-function makeCommentSection() {
-    const div = document.createElement('div');
-    div.innerHTML = `
-    <form>
-        <label for="comment">comment:</label>
-        <input type="text" placeholder="Add a comment..." name="comment" id="comment">
-        <input id="form-button" type="submit" value="Submit">
-    </form>
-    `
-    const button = div.querySelector('#form-button');
-    button.addEventListener('click', addComment);
-    const comments = document.createElement('div');
-    comments.setAttribute('id', 'comments');
-    div.appendChild(comments);
-    document.body.appendChild(div);
-}
-
-
-
 function makeVoteSection() {
     const popDiv = document.createElement('div');
     popDiv.innerText = 'Popularity score: '
@@ -82,7 +52,24 @@ function makeVoteSection() {
     downVote.addEventListener('click', removeVote);
 }
 
-const fetchImage = async () => {
+function makeCommentSection() {
+    const div = document.createElement('div');
+    div.innerHTML = `
+    <form>
+        <label for="comment">comment:</label>
+        <input type="text" placeholder="Add a comment..." name="comment" id="comment">
+        <input id="form-button" type="submit" value="Submit">
+    </form>
+    `
+    const button = div.querySelector('#form-button');
+    button.addEventListener('click', addComment);
+    const comments = document.createElement('div');
+    comments.setAttribute('id', 'comments');
+    div.appendChild(comments);
+    document.body.appendChild(div);
+}
+
+export const fetchImage = async () => {
     // Fetch image from API and set img url
     try {
         const kittenResponse = await fetch("https://api.thecatapi.com/v1/images/search?size=small");
