@@ -1,0 +1,1 @@
+This folder contains the code originally written by me for phase 1. Code was replaced by the starter provided by phase 2. That starter code was then used to program future functionality.
