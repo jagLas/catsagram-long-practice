@@ -1,28 +1,17 @@
-// Your code here
-async function getCat() {
-     let cat = await fetch('https://api.thecatapi.com/v1/images/search')
-    cat = await cat.json();
-    return cat;
-}
+import { createMainContent } from './main.js';
 
-async function makeCatFigure() {
-    const div = document.createElement('div');
-    let cat = await getCat();
-    cat = cat[0]
-    // console.log(cat)
-
-    div.innerHTML = 
-    `
-        <figure data-catId="${cat.id}">
-            <figcaption>Kitten pic</figcaption>
-            <img src="${cat.url}" alt="cat pic">
-        </figure>
-    `
-    document.body.appendChild(div);
-}
+const initializePage = () => {
+    // Create container
+    const container = document.createElement("section");
+    container.className = "container";
+    container.style.display = "flex";
+    container.style.flexDirection = "column";
+    container.style.alignItems = "center";
+    container.style.marginTop = "20px";
+    document.body.appendChild(container);
+};
 
 window.onload = () => {
-    console.log('scripts loading')
-    // getCat();
-    makeCatFigure();
-}
+    initializePage();
+    createMainContent();
+};
