@@ -21,15 +21,20 @@ export const createMainContent = () => {
 };
 
 function makeNewPicButton() {
+    const div = document.createElement('div');
+    div.setAttribute('class', 'container');
+    document.body.appendChild(div);
+
     const button = document.createElement('button');
     button.setAttribute('id', 'new-pic');
     button.innerText = 'New Pic';
     button.addEventListener('click', newPic);
-    document.body.appendChild(button);
+    div.appendChild(button);
 }
 
 function makeVoteSection() {
     const popDiv = document.createElement('div');
+    popDiv.setAttribute('class', 'container')
     popDiv.innerText = 'Popularity score: '
     const score = document.createElement('span');
     score.innerText = 0;
@@ -38,6 +43,7 @@ function makeVoteSection() {
     document.body.appendChild(popDiv);
 
     const voteDiv = document.createElement('div');
+    voteDiv.setAttribute('class', 'container')
     const upVote = document.createElement('button');
     upVote.innerText = 'Upvote';
     upVote.setAttribute('id', 'up-vote');
@@ -54,9 +60,11 @@ function makeVoteSection() {
 
 function makeCommentSection() {
     const div = document.createElement('div');
+    div.setAttribute('class', 'container')
+    div.setAttribute('class', 'comments')
     div.innerHTML = `
     <form>
-        <label for="comment">comment:</label>
+        <label for="comment">Comment:</label>
         <input type="text" placeholder="Add a comment..." name="comment" id="comment">
         <input id="form-button" type="submit" value="Submit">
     </form>

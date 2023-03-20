@@ -1,0 +1,28 @@
+button, input[type="submit"] {
+    padding: 4px 16px;
+    border-radius: 4px;
+    margin: 0px 8px;
+}
+
+div.container {
+    margin: 8px auto;
+    /* max-width: 750px; */
+    width: fit-content;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+div.comments {
+    margin: 8px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+#comments{
+    border: solid 1px black;
+    width: 700px;
+    min-height: 300px;
+}
