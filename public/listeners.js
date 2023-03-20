@@ -28,4 +28,5 @@ export const newPic = () => {
     score.innerText = 0;
 
     //reset comments
+    document.querySelector('#comments').innerHTML = '';
 }
