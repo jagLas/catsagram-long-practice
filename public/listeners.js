@@ -18,8 +18,8 @@ export function addComment(e) {
     const div = document.createElement('div');
     div.innerText = comment.value;
     document.querySelector('#comments').appendChild(div);
-    comment.value = ''
-    localStorage.comments = document.querySelector('#comments').children
+    comment.value = '';
+    localStorage.comments = document.querySelector('#comments').innerHTML;
 }
 
 export const newPic = () => {

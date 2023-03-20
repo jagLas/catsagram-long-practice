@@ -14,7 +14,13 @@ export const createMainContent = () => {
     container.appendChild(h1);
     container.appendChild(img);
 
-    fetchImage();
+    const kittenImg = localStorage.getItem('kittenImg')
+    if(kittenImg) {
+        img.src = kittenImg;
+    } else {
+        fetchImage();
+    }
+
     makeNewPicButton();
     makeVoteSection();
     makeCommentSection();
@@ -37,7 +43,14 @@ function makeVoteSection() {
     popDiv.setAttribute('class', 'container')
     popDiv.innerText = 'Popularity score: '
     const score = document.createElement('span');
-    score.innerText = 0;
+
+    const savedScore = localStorage.getItem('popScore');
+    if (savedScore) {
+        score.innerText = savedScore;
+    } else {
+        score.innerText = 0;
+    }
+
     score.setAttribute('id', 'score');
     popDiv.appendChild(score);
     document.body.appendChild(popDiv);
@@ -75,6 +88,9 @@ function makeCommentSection() {
     comments.setAttribute('id', 'comments');
     div.appendChild(comments);
     document.body.appendChild(div);
+    
+    const savedComments = localStorage.getItem('comments');
+    comments.innerHTML = savedComments;
 }
 
 export const fetchImage = async () => {
