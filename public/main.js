@@ -1,3 +1,5 @@
+import { addVote, removeVote, addComment } from "./listeners.js";
+
 export const createMainContent = () => {
     // Create h1
     const h1 = document.createElement("h1");
@@ -54,14 +56,7 @@ function makeCommentSection() {
     document.body.appendChild(div);
 }
 
-function addComment(e) {
-    e.preventDefault();
-    const comment = document.getElementsByName('comment')[0];
-    const div = document.createElement('div');
-    div.innerText = comment.value;
-    document.querySelector('#comments').appendChild(div);
-    comment.value = ''
-}
+
 
 function makeVoteSection() {
     const popDiv = document.createElement('div');
@@ -85,16 +80,6 @@ function makeVoteSection() {
     voteDiv.appendChild(downVote);
     document.body.appendChild(voteDiv);
     downVote.addEventListener('click', removeVote);
-}
-
-function addVote (e) {
-    const score = document.querySelector('#score');
-    score.innerText = Number(score.innerText) + 1;
-}
-
-function removeVote(e) {
-    const score = document.querySelector('#score');
-    score.innerText = Number(score.innerText) - 1;
 }
 
 const fetchImage = async () => {
